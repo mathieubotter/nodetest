@@ -1,13 +1,17 @@
-function index() {
+function index(response) {
     console.log("Request handler 'index' was called.");
     
-    return 'Hello Index';
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.write('Hello Index');
+    response.end();
 }
 
-function test() {
+function test(response) {
     console.log("Request handler 'test' was called.");
     
-    return 'Hello Test';
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Hello Test');
+    response.end();
 }
 
 exports.index = index;
