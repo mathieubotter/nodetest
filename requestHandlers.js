@@ -7,3 +7,4 @@ function test() {
 }
 
 exports.index = index;
+exports.test = test;
