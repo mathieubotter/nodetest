@@ -8,11 +8,19 @@ function index(response, postData) {
         '<head>\n'+
         '   <meta charset="utf-8" />\n'+
         '   <title>NodeTest</title>\n'+
+        '   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />\n'+
+        '   <link rel="stylesheet" href="css/base.css">\n'+
+        '   <link rel="stylesheet" href="css/skeleton.css">\n'+
+        '   <link rel="stylesheet" href="css/layout.css">\n'+
         '</head>\n'+
         '<body>\n'+
-        '   <h1>NodeTest</h1>\n'+
-        '   <p>Bienvenue sur le site de test de nodejs.</p>\n'+
-        '   <p>Page de test : <a href="/test">test</a></p>\n'+
+        '   <div class="container">\n'+
+        '       <h1>NodeTest</h1>\n'+
+        '       <p>Bienvenue sur le site de test de nodejs.</p>\n'+
+        '       <p>Page de test : <a href="/test">test</a></p>\n'+
+        '   </div>\n'+
+        '   <script src="js/jquery-1.5.1.min.js"></script>\n'+
+        '   <script src="js/app.js"></script>\n'+
         '</body>\n'+
         '</html>';
     
