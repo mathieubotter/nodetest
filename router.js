@@ -7,11 +7,9 @@ function route(handle, pathname, response, postData) {
     if (typeof handle[pathname] === 'function') {
         handle[pathname](response, postData);
     } else {
-        //pathname = 'www' + pathname;
-        
-        console.log("No request handler found for " + pathname);
-        
-        /*var extname = path.extname(pathname);
+        var filepath = 'www' + pathname;
+
+        var extname = path.extname(filepath);
         var contentType = 'text/html';
         switch(extname) {
             case '.css':
@@ -22,7 +20,7 @@ function route(handle, pathname, response, postData) {
                 break;
         }
         
-        path.exists(pathname, function(exists) {
+        path.exists(filepath, function(exists) {
             if (exists) {
                 fs.readFile(filepath, function(error, content) {
                     if (error) {
@@ -34,15 +32,13 @@ function route(handle, pathname, response, postData) {
                     }
                 });
             } else {
+                console.log("No request handler found for " + pathname);
+                
                 response.writeHead(404, {"Content-Type": "text/html"});
                 response.write("404 Not found");
                 response.end();
             }
-        });*/
-        
-        response.writeHead(404, {"Content-Type": "text/html"});
-        response.write("404 Not found");
-        response.end();
+        });
     }
 }
 

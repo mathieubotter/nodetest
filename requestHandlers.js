@@ -8,7 +8,8 @@ function index(response, postData) {
         '<head>\n'+
         '   <meta charset="utf-8" />\n'+
         '   <title>NodeTest</title>\n'+
-        '   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />\n'+
+        '   <meta name="viewport" content="width=device-width, '+
+        'initial-scale=1, maximum-scale=1" />\n'+
         '   <link rel="stylesheet" href="css/base.css">\n'+
         '   <link rel="stylesheet" href="css/skeleton.css">\n'+
         '   <link rel="stylesheet" href="css/layout.css">\n'+
