@@ -34,9 +34,11 @@ function route(handle, pathname, response, postData) {
             } else {
                 console.log("No request handler found for " + pathname);
                 
-                response.writeHead(404, {"Content-Type": "text/html"});
-                response.write("404 Not found");
-                response.end();
+                fs.readFile('www/404.html', function(error, content) {
+                    response.writeHead(404, {"Content-Type": "text/html"});
+                    response.write(content);
+                    response.end();
+                });
             }
         });
     }
