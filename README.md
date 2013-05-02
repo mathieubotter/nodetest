@@ -1,5 +1,7 @@
 # NodeTest
 
+[![Build Status](https://travis-ci.org/mathieubotter/NodeTest.png?branch=master)](https://travis-ci.org/mathieubotter/NodeTest)
+
 NodeTest is a project to experiment nodejs.
 It is developed using the [Cloud9](http://cloud9ide.com) IDE.
 
