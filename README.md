@@ -1,14 +1,16 @@
 # NodeTest
 
-NodeTest is a project to experiment nodejs.
-It is developed using the [Cloud9](http://cloud9ide.com) IDE.
+NodeTest is just a little project to experiment nodejs.
+It is developed using the [Cloud9](http://c9.io) IDE.
 
 [![Build Status](https://travis-ci.org/mathieubotter/NodeTest.png?branch=master)](https://travis-ci.org/mathieubotter/NodeTest)
 
-### More Information
+## About
 
-NodeTest uses [Skeleton](http://www.getskeleton.com), a small collection of CSS & JS files.
+NodeTest now uses [express](http://expressjs.com/) with ejs and [stylus](http://learnboost.github.io/stylus/)
+(and [Skeleton](http://www.getskeleton.com), a small collection of CSS & JS files).
 
-### NodeTest Credits
+## Silly things
 
-Developed by [Mathieu Botter](http://mathieubotter.com/)
+[Mathieu Botter](http://mathieubotter.com/) made this.
+[@mathieubotter](http://twitter.com/mathieubotter) on Twitter.
