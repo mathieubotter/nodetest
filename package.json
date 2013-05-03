@@ -9,12 +9,12 @@
     "type": "git",
     "url": "git://github.com/mathieubotter/NodeTest.git"
   },
-  "scripts": {
-    "test": "make test"
+  "scripts": { 
+    "test": "node test/test.js"
   },
   "engines": {
     "node": ">= 0.4"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": { "test": ">=0.0.5" }
 }
