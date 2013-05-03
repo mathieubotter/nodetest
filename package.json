@@ -1,0 +1,20 @@
+{
+  "author": "Mathieu Botter",
+  "name": "NodeTest",
+  "description": "An example node.js project that use travis-ci.org for continuous integration",
+  "version": "0.0.0",
+  "homepage": "https://travis-ci.org/mathieubotter/NodeTest",
+  "main": "./myapp/app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mathieubotter/NodeTest.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": {
+    "node": ">= 0.4"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
