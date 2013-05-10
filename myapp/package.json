@@ -1,5 +1,6 @@
 {
-  "name": "NodeTest MyApp",
+  "name": "nodetest - myapp",
+  "author": "Mathieu Botter <hi@mathieubotter.com>",
   "version": "0.0.1",
   "private": true,
   "scripts": {
