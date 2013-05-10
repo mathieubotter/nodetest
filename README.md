@@ -1,9 +1,16 @@
 # NodeTest
 
+[![Build Status](https://travis-ci.org/mathieubotter/NodeTest.png?branch=master)](https://travis-ci.org/mathieubotter/NodeTest)
+
 NodeTest is just a little project to experiment nodejs.  
 It is developed using the [Cloud9](http://c9.io) IDE.
 
-[![Build Status](https://travis-ci.org/mathieubotter/NodeTest.png?branch=master)](https://travis-ci.org/mathieubotter/NodeTest)
+## Getting Started
+
+    $ git clone git://github.com/mathieubotter/NodeTest.git
+    $ cd NodeTest
+    $ npm install
+    $ node myapp/app.js
 
 ## About
 
