@@ -1,23 +1,10 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
-
 # Node.js
 node_modules
 npm-debug.log
 
-# c9.io
-.c9revisions/
-
 # SublimeText project files
 /*.sublime-project
 *.sublime-workspace
+
+# c9.io
+.c9revisions/

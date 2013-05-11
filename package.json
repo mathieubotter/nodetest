@@ -1,25 +1,36 @@
 {
   "name": "nodetest",
-  "author": "Mathieu Botter <hi@mathieubotter.com>",
-  "description": "An example node.js project that use travis-ci.org for continuous integration",
+  "description": "A little web app project for node.js experiments",
   "version": "0.0.1",
-  "homepage": "https://travis-ci.org/mathieubotter/NodeTest",
+  "author": "Mathieu Botter (http://mathieubotter.com)",
+  "homepage": "http://mb-nodetest.herokuapp.com/",
   "repository": {
     "type": "git",
     "url": "git://github.com/mathieubotter/NodeTest.git"
   },
-  "main": "./myapp/app.js",
-  "scripts": { 
-    "test": "node test/test.js"
+  "bugs": {
+    "url": "http://github.com/mathieubotetr/NodeTest/issues"
+  },
+  "main": "./app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha"
   },
   "engines": {
     "node": "0.10.x",
-    "npm":  "1.2.x"
+    "npm": "1.2.x"
   },
   "dependencies": {
-    "express": "3.2.1",
-    "ejs":     "*",
-    "stylus":  "*"
+    "express": "3.2.x",
+    "ejs": "0.8.x",
+    "stylus": "0.32.x",
+    "socket.io": "0.9.x"
   },
-  "devDependencies": { "test": ">=0.0.5" }
+  "devDependencies": {
+    "mocha": "1.9.x"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/mathieubotter/NodeTest/blob/master/LICENSE"
+  }
 }
