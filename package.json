@@ -27,7 +27,8 @@
     "socket.io": "0.9.x"
   },
   "devDependencies": {
-    "mocha": "1.9.x"
+    "mocha": "1.9.x",
+    "grunt": "~0.4.1"
   },
   "license": {
     "type": "MIT",
