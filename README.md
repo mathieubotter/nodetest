@@ -1,14 +1,14 @@
 # NodeTest
 
-[![Build Status](https://travis-ci.org/mathieubotter/NodeTest.png?branch=master)](https://travis-ci.org/mathieubotter/NodeTest)
+[![Build Status](https://travis-ci.org/mathieubotter/nodetest.png?branch=master)](https://travis-ci.org/mathieubotter/nodetest)
 
 NodeTest is just a little web app project for node.js experiments.  
 It is developed using Sublime Text 2 and sometimes [Cloud9](http://c9.io).
 
 ## Getting Started
 
-    $ git clone git://github.com/mathieubotter/NodeTest.git
-    $ cd NodeTest
+    $ git clone git://github.com/mathieubotter/nodetest.git
+    $ cd nodetest
     $ npm install
     $ npm start
 

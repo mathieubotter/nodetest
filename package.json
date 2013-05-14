@@ -6,10 +6,10 @@
   "homepage": "http://mb-nodetest.herokuapp.com/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mathieubotter/NodeTest.git"
+    "url": "git://github.com/mathieubotter/nodetest.git"
   },
   "bugs": {
-    "url": "http://github.com/mathieubotetr/NodeTest/issues"
+    "url": "http://github.com/mathieubotter/nodetest/issues"
   },
   "main": "./app.js",
   "scripts": {
@@ -23,8 +23,9 @@
   "dependencies": {
     "express": "3.2.x",
     "ejs": "0.8.x",
+    "ejs-locals": "~1.0.2",
     "stylus": "0.32.x",
-    "socket.io": "0.9.x"
+    "socket.io": "0.9.x",
   },
   "devDependencies": {
     "mocha": "1.9.x",
@@ -34,6 +35,6 @@
   },
   "license": {
     "type": "MIT",
-    "url": "https://github.com/mathieubotter/NodeTest/blob/master/LICENSE"
+    "url": "https://github.com/mathieubotter/nodetest/blob/master/LICENSE"
   }
 }
