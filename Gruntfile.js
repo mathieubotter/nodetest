@@ -5,14 +5,21 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: ['Gruntfile.js', 'test/*.js']
+      all: ['Gruntfile.js', 'app.js', 'lib/**/*.js', 'routes/*.js', 'test/*.js']
+    },
+    stylus: {
+      compile : {
+        files : {
+          'public/css/style.css' : 'public/css/*.styl'
+        }
+      }
     }
   });
 
-  // Load the plugin that provides the "JSHint" task.
+  // Load the plugins.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-stylus');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint']);
-
+  grunt.registerTask('default', ['jshint', 'stylus']);
 };
