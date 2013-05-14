@@ -1,39 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title><%= title %></title>
-
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
-</head>
-<body style="padding-top: 70px;">
-
-	<header role="banner">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a href="#" class="brand"><%= title %></a>
-
-			        <div class="nav-collapse collapse">
-			            <ul class="nav">
-			            	<li class="active"><a href="#">Home</a></li>
-			            </ul>
-			        </div>
-				</div>
-			</div>
-		</div>
-	</header>
-
-	<section id="main" role="main">
-		<div class="container">
-			<div class="well">
-				<p>Welcome to <%= title %></p>
-			</div>
-		</div>
-	</section>
-
-	<footer>
-	</footer>
-
-</body>
-</html>
+<% layout('layout') -%>
+<div class="container">
+	<h2>Experiments</h2>
+    
+    <ul>
+        <li><a href="#">Instant messaging</a> (soon)</li>
+        <li><a href="#">Todo list</a> (soon)</li>
+        <li><a href="#">Three.js lab</a> (soon)</li>
+    </ul>
+</div>

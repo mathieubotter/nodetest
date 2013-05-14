@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    
+    <meta name="description" content="A little web app project for node.js experiments with Cloud9 and Heroku">
+    <meta name="author" content="Mathieu Botter">
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
+</head>
+<body style="padding-top: 70px;">
+
+	<header role="banner">
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a href="/" class="brand"><%= title %></a>
+
+			        <div class="nav-collapse collapse">
+			            <ul class="nav">
+			            	<li><a href="/about">About</a></li>
+			            </ul>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<section id="main" role="main">
+		<%- body %>
+	</section>
+
+	<footer>
+	</footer>
+
+</body>
+</html>

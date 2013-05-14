@@ -4,11 +4,16 @@
  */
 
 var express = require('express'),
-	routes = require('./routes'),
+    engine = require('ejs-locals'),
+	home = require('./routes'),
+    about = require('./routes/about'),
 	http = require('http'),
 	path = require('path');
 
 var app = express();
+
+// use ejs-locals for all ejs templates
+app.engine('ejs', engine);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,7 +34,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+app.get('/', home.index);
+app.get('/about', about.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
