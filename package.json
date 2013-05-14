@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "mocha": "1.9.x",
-    "grunt": "~0.4.1"
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.4.3"
   },
   "license": {
     "type": "MIT",
