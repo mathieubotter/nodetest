@@ -7,6 +7,7 @@ var express = require('express'),
     engine = require('ejs-locals'),
 	home = require('./routes'),
     about = require('./routes/about'),
+    threejs = require('./routes/threejs'),
 	http = require('http'),
 	path = require('path');
 
@@ -36,6 +37,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', home.index);
 app.get('/about', about.index);
+app.get('/threejs', threejs.index);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
