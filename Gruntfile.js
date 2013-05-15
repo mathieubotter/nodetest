@@ -5,7 +5,14 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     jshint: {
-      all: ['Gruntfile.js', 'app.js', 'lib/**/*.js', 'routes/*.js', 'test/*.js']
+      all: [
+        'Gruntfile.js',
+        'app.js',
+        'lib/**/*.js',
+        'routes/*.js',
+        'test/*.js',
+        'public/js/three-script.js'
+      ]
     },
     stylus: {
       compile : {
