@@ -27,7 +27,7 @@ $surface.append(renderer.domElement);
 
 // add a cube
 var geometry = new THREE.CubeGeometry(50,50,50);
-var material = new THREE.MeshBasicMaterial({color: 0xc5c5ff});
+var material = new THREE.MeshLambertMaterial({color: 0xc5c5ff, shading: THREE.FlatShading});
 var cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 scene.add(camera);
