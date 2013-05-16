@@ -1,52 +1,63 @@
 var $surface = $('#surface');
 
 // set the scene size
-var WIDTH = 400,
-    HEIGHT = 300;
+var WIDTH = 800,
+    HEIGHT = 400;
 
 // set some camera attributes
 var VIEW_ANGLE = 45,
     ASPECT = WIDTH / HEIGHT,
-    NEAR = 0.1,
-    FAR = 10000;
+    NEAR = 10,
+    FAR = 1000;
 
-// create a WebGL renderer, camera
-// and a scene
+// Create a WebGL renderer
 var renderer = new THREE.WebGLRenderer();
-var camera = new THREE.PerspectiveCamera(  VIEW_ANGLE,
-                                ASPECT,
-                                NEAR,
-                                FAR  );
-var scene = new THREE.Scene();
-// the camera starts at 0,0,0 so pull it back
-camera.position.z = 200;
-// start the renderer
 renderer.setSize(WIDTH, HEIGHT);
-// attach the render-supplied DOM element
 $surface.append(renderer.domElement);
 
-// add a cube
-var geometry = new THREE.CubeGeometry(50,50,50);
-var material = new THREE.MeshLambertMaterial({color: 0xc5c5ff, shading: THREE.FlatShading});
-var cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-scene.add(camera);
+// scene
+var scene = new THREE.Scene();
 
-// create a point light
-var pointLight = new THREE.PointLight( 0xFFFFFF );
-// set its position
+// and a camera
+var camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+camera.position.z = 400;
+scene.add(camera);
+// var camera = new THREE.OrthographicCamera( WIDTH / - 2, WIDTH / 2, HEIGHT / 2, HEIGHT / - 2, 1, 1000 );
+// camera.position.z = 400;
+// scene.add(camera);
+
+// The Cube
+var geometry = new THREE.CubeGeometry(100,100,100);
+var material = new THREE.MeshLambertMaterial({color: 0x75d1c8, shading: THREE.FlatShading});
+var cube = new THREE.Mesh(geometry, material);
+cube.position.x = -100;
+scene.add(cube);
+
+// The Cube2
+var material2 = new THREE.MeshLambertMaterial({color: 0xcfbe6e, shading: THREE.FlatShading});
+var cube2 = new THREE.Mesh(geometry, material2);
+cube2.position.x = 100;
+scene.add(cube2);
+
+// Ambient light
+var ambientLight = new THREE.AmbientLight(0x202020);
+scene.add(ambientLight);
+
+// Point light
+var pointLight = new THREE.PointLight(0xFFFFFF);
 pointLight.position.x = 10;
 pointLight.position.y = 50;
 pointLight.position.z = 130;
-// add to the scene
 scene.add(pointLight);
 
-// draw!
+// Render
 var render = function () {
   requestAnimationFrame(render);
 
   cube.rotation.x += 0.01;
   cube.rotation.y += 0.02;
+
+  cube2.rotation.y += 0.02;
 
   renderer.render(scene, camera);
 };
