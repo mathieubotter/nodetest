@@ -4,6 +4,7 @@ if (!Detector.WebGL) Detector.addGetWebGLMessage();
 var scene, camera, renderer;
 var cube, cube2, plane;
 var controls;
+var stats;
 
 init();
 animate();
@@ -88,13 +89,19 @@ function init() {
   controls.dynamicDampingFactor = 0.3;
 
   controls.keys = [ 65, 83, 68 ];
+
+  // Stats
+  stats = new Stats();
+  $surface.append(stats.domElement);
 }
 
 // Animate
 function animate() {
 
   requestAnimationFrame(animate);
+
   render();
+  stats.update();
 }
 
 // Render
@@ -114,4 +121,4 @@ function render() {
   controls.update();
 
   renderer.render(scene, camera);
-};
+}
