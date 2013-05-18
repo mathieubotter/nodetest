@@ -2,9 +2,12 @@
 if (!Detector.WebGL) Detector.addGetWebGLMessage();
 
 var scene, camera, renderer;
-var cube, cube2, plane;
+var cube, cube2, plane, spotlight;
 var controls;
 var stats;
+
+// Spotlight move
+var reversed = false;
 
 init();
 animate();
@@ -14,7 +17,7 @@ function init() {
   var $surface = $('#surface');
 
   // set the scene size
-  var WIDTH = 940,
+  var WIDTH = 940, 
       HEIGHT = 500;
 
   // set some camera attributes
@@ -26,6 +29,7 @@ function init() {
   // Create a WebGL renderer
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(WIDTH, HEIGHT);
+  renderer.shadowMapEnabled = true;
   $surface.append(renderer.domElement);
 
   // scene
@@ -34,17 +38,18 @@ function init() {
   // and a camera
   camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
   // camera.position.x = 100;
-  camera.position.y = 100;
-  camera.position.z = 500;
+  camera.position.y = 400;
+  camera.position.z = 1000;
   // camera.rotation.x = -0.1;
   // camera.rotation.y = 0.2;
   scene.add(camera);
 
   // The Plane
-  plane = new THREE.Mesh(new THREE.PlaneGeometry(500, 500, 10, 10), 
-    new THREE.MeshLambertMaterial({wireframe: true}));
+  plane = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000, 20, 20), 
+    new THREE.MeshLambertMaterial());
   plane.position.y = -100;
   plane.rotation.x = -1.6;
+  plane.receiveShadow = true;
   scene.add(plane);
 
   // The Cube
@@ -52,29 +57,89 @@ function init() {
   var material = new THREE.MeshPhongMaterial({color: 0x75d1c8, shading: THREE.FlatShading});
   cube = new THREE.Mesh(geometry, material);
   cube.position.x = -150;
+  cube.castShadow = true;
   scene.add(cube);
 
   // The Cube2
   var material2 = new THREE.MeshLambertMaterial({color: 0xcfbe6e, shading: THREE.FlatShading});
   cube2 = new THREE.Mesh(geometry, material2);
   cube2.position.x = 150;
+  cube2.castShadow = true;
   scene.add(cube2);
 
+  // Lights
+  // spotlight #1 -- yellow, dark shadow
+  spotlight = new THREE.SpotLight(0xb0b0e5);
+  spotlight.position.set(0,600,-200);
+  spotlight.shadowCameraVisible = true;
+  spotlight.shadowDarkness = 0.6;
+  spotlight.intensity = 1;
+  // must enable shadow casting ability for the light
+  spotlight.castShadow = true;
+  scene.add(spotlight);
+
+  var hemiLight = new THREE.HemisphereLight( 0x444444, 0x444444, 0.7 );
+  // hemiLight.color.setHSL( 0.6, 1, 0.6 );
+  // hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+  hemiLight.position.set( 0, 500, -400 );
+  hemiLight.castShadow = true;
+  scene.add( hemiLight );
+
   // Ambient light
-  var ambientLight = new THREE.AmbientLight(0x222222);
-  scene.add(ambientLight);
+  // var ambientLight = new THREE.AmbientLight(0x222222);
+  // ambientLight.position.set( 0, 200, 100 );
+  // scene.add(ambientLight);
 
   // directional lighting
   var directionalLight = new THREE.DirectionalLight(0xffffff);
-  directionalLight.position.set(1, 1, 1).normalize();
+  directionalLight.position.set(100, 100, 300);
   scene.add(directionalLight);
 
+  // create "light-ball" meshes
+  var sphereGeometry = new THREE.SphereGeometry( 10, 16, 8 );
+  var darkMaterial = new THREE.MeshBasicMaterial( { color: 0x000000 } );
+
+  var wireframeMaterial = new THREE.MeshBasicMaterial( 
+    { color: 0xffff00, wireframe: true, transparent: true } ); 
+  var shape = THREE.SceneUtils.createMultiMaterialObject( 
+    sphereGeometry, [ darkMaterial, wireframeMaterial ] );
+  shape.position = hemiLight.position;
+  scene.add( shape );
+
+  // var wireframeMaterial = new THREE.MeshBasicMaterial( 
+  //   { color: 0xff0000, wireframe: true, transparent: true } ); 
+  // var shape = THREE.SceneUtils.createMultiMaterialObject( 
+  //   sphereGeometry, [ darkMaterial, wireframeMaterial ] );
+  // shape.position = ambientLight.position;
+  // scene.add( shape );
+  
+  var wireframeMaterial = new THREE.MeshBasicMaterial( 
+    { color: 0x0000ff, wireframe: true, transparent: true } ); 
+  var shape = THREE.SceneUtils.createMultiMaterialObject( 
+    sphereGeometry, [ darkMaterial, wireframeMaterial ] );
+  shape.position = directionalLight.position;
+  scene.add( shape );
+
+  var wireframeMaterial = new THREE.MeshBasicMaterial( 
+    { color: 0x5c683f, wireframe: true, transparent: true } ); 
+  var shape = THREE.SceneUtils.createMultiMaterialObject( 
+    sphereGeometry, [ darkMaterial, wireframeMaterial ] );
+  shape.position = spotlight.position;
+  scene.add( shape );
+
   // Point light
-  var pointLight = new THREE.PointLight(0xFFFFFF);
-  pointLight.position.x = 10;
-  pointLight.position.y = 50;
-  pointLight.position.z = 130;
+  // var pointLight = new THREE.PointLight(0xFFFFFF);
+  // pointLight.position.x = 10;
+  // pointLight.position.y = 50;
+  // pointLight.position.z = 130;
   // scene.add(pointLight);
+
+  // Skybox/Fog
+  // var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+  // var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0xcccccc, side: THREE.BackSide } );
+  // var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+  // scene.add(skyBox);
+  // scene.fog = new THREE.FogExp2( 0xcccccc, 0.00025 );
 
   // Controls
   controls = new THREE.TrackballControls(camera);
@@ -112,6 +177,19 @@ function animate() {
 function render() {
 
   var timer = new Date().getTime() * 0.0005;
+
+  if (spotlight.position.x <= -200 && reversed == false) {
+    reversed = true;
+  }
+  else if (spotlight.position.x >= 200 && reversed == true) {
+    reversed = false;
+  }
+  if (reversed) {
+    spotlight.position.x += 2;
+  }
+  else {
+    spotlight.position.x -= 2;
+  }
 
   cube.rotation.x += 0.005;
   cube.rotation.y += 0.008;
