@@ -90,6 +90,10 @@ function init() {
 
   controls.keys = [ 65, 83, 68 ];
 
+  // Axes
+  var axes = new THREE.AxisHelper(50);
+  scene.add(axes);
+
   // Stats
   stats = new Stats();
   $surface.append(stats.domElement);
