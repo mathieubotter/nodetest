@@ -1,4 +1,6 @@
 
+if (!Detector.WebGL) Detector.addGetWebGLMessage();
+
 var scene, camera, renderer;
 var cube, cube2, plane;
 var controls;
