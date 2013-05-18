@@ -27,7 +27,7 @@ function init() {
       FAR = 10000;
 
   // Create a WebGL renderer
-  renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer({antialias: true});
   renderer.setSize(WIDTH, HEIGHT);
   renderer.shadowMapEnabled = true;
   $surface.append(renderer.domElement);
