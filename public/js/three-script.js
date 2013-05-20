@@ -45,7 +45,7 @@ function init() {
   scene.add(camera);
 
   // The Plane
-  plane = new THREE.Mesh(new THREE.PlaneGeometry(2000, 2000, 20, 20), 
+  plane = new THREE.Mesh(new THREE.PlaneGeometry(5000, 5000, 50, 50), 
     new THREE.MeshLambertMaterial());
   plane.position.y = -100;
   plane.rotation.x = -1.6;
@@ -140,6 +140,25 @@ function init() {
   // var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
   // scene.add(skyBox);
   // scene.fog = new THREE.FogExp2( 0xcccccc, 0.00025 );
+
+  // Skydome
+  var vertexShader = document.getElementById( 'vertexShader' ).textContent;
+  var fragmentShader = document.getElementById( 'fragmentShader' ).textContent;
+  var uniforms = {
+    topColor:    { type: "c", value: new THREE.Color( 0x0077ff ) },
+    bottomColor: { type: "c", value: new THREE.Color( 0xffffff ) },
+    offset:    { type: "f", value: 33 },
+    exponent:  { type: "f", value: 0.6 }
+  }
+  uniforms.topColor.value.copy( hemiLight.color );
+
+  // scene.fog.color.copy( uniforms.bottomColor.value );
+
+  var skyGeo = new THREE.SphereGeometry( 5000, 32, 15 );
+  var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
+
+  var sky = new THREE.Mesh( skyGeo, skyMat );
+  scene.add( sky );
 
   // Controls
   controls = new THREE.TrackballControls(camera);
