@@ -34,6 +34,8 @@ function init() {
 
   // scene
   scene = new THREE.Scene();
+  scene.fog = new THREE.Fog( 0xffffff, 1, 5000 );
+  scene.fog.color.setHSL( 0.6, 0, 1 );
 
   // and a camera
   camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
@@ -78,11 +80,11 @@ function init() {
   spotlight.castShadow = true;
   scene.add(spotlight);
 
-  var hemiLight = new THREE.HemisphereLight( 0x444444, 0x444444, 0.7 );
-  // hemiLight.color.setHSL( 0.6, 1, 0.6 );
-  // hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
-  hemiLight.position.set( 0, 500, -400 );
-  hemiLight.castShadow = true;
+  var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+  hemiLight.color.setHSL( 0.6, 1, 0.6 );
+  hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+  hemiLight.position.set( 0, 500, 0 );
+  // hemiLight.castShadow = true;
   scene.add( hemiLight );
 
   // Ambient light
@@ -105,13 +107,6 @@ function init() {
     sphereGeometry, [ darkMaterial, wireframeMaterial ] );
   shape.position = hemiLight.position;
   scene.add( shape );
-
-  // var wireframeMaterial = new THREE.MeshBasicMaterial( 
-  //   { color: 0xff0000, wireframe: true, transparent: true } ); 
-  // var shape = THREE.SceneUtils.createMultiMaterialObject( 
-  //   sphereGeometry, [ darkMaterial, wireframeMaterial ] );
-  // shape.position = ambientLight.position;
-  // scene.add( shape );
   
   var wireframeMaterial = new THREE.MeshBasicMaterial( 
     { color: 0x0000ff, wireframe: true, transparent: true } ); 
@@ -152,7 +147,7 @@ function init() {
   }
   uniforms.topColor.value.copy( hemiLight.color );
 
-  // scene.fog.color.copy( uniforms.bottomColor.value );
+  scene.fog.color.copy( uniforms.bottomColor.value );
 
   var skyGeo = new THREE.SphereGeometry( 5000, 32, 15 );
   var skyMat = new THREE.ShaderMaterial( { vertexShader: vertexShader, fragmentShader: fragmentShader, uniforms: uniforms, side: THREE.BackSide } );
@@ -162,7 +157,7 @@ function init() {
 
   // Controls
   controls = new THREE.TrackballControls(camera);
-  controls.rotateSpeed = 1.0;
+  controls.rotateSpeed = 1.2;
   controls.zoomSpeed = 1.2;
   controls.panSpeed = 0.8;
 
