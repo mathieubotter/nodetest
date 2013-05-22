@@ -2,7 +2,7 @@
 if (!Detector.WebGL) Detector.addGetWebGLMessage();
 
 var scene, camera, renderer;
-var cube, cube2, plane, spotlight;
+var cube, cube2, plane, spotlight, hemiLight, directionalLight;
 var controls;
 var stats;
 
@@ -80,7 +80,7 @@ function init() {
   spotlight.castShadow = true;
   scene.add(spotlight);
 
-  var hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+  hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
   hemiLight.color.setHSL( 0.6, 1, 0.6 );
   hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
   hemiLight.position.set( 0, 500, 0 );
@@ -93,7 +93,7 @@ function init() {
   // scene.add(ambientLight);
 
   // directional lighting
-  var directionalLight = new THREE.DirectionalLight(0xffffff);
+  directionalLight = new THREE.DirectionalLight(0xffffff);
   directionalLight.position.set(100, 100, 300);
   scene.add(directionalLight);
 
@@ -176,6 +176,22 @@ function init() {
   // Stats
   stats = new Stats();
   $surface.append(stats.domElement);
+
+  document.addEventListener( 'keydown', onKeyDown, false );
+}
+
+function onKeyDown ( event ) {
+
+  switch ( event.keyCode ) {
+
+    case 72: /*h*/
+    hemiLight.visible = !hemiLight.visible;
+    break;
+
+    case 68: /*d*/
+    directionalLight.visible = !directionalLight.visible;
+    break;
+  }
 }
 
 // Animate
