@@ -108,16 +108,16 @@ function init() {
   shape.position = hemiLight.position;
   scene.add( shape );
   
-  var wireframeMaterial = new THREE.MeshBasicMaterial( 
+  wireframeMaterial = new THREE.MeshBasicMaterial( 
     { color: 0x0000ff, wireframe: true, transparent: true } ); 
-  var shape = THREE.SceneUtils.createMultiMaterialObject( 
+  shape = THREE.SceneUtils.createMultiMaterialObject( 
     sphereGeometry, [ darkMaterial, wireframeMaterial ] );
   shape.position = directionalLight.position;
   scene.add( shape );
 
-  var wireframeMaterial = new THREE.MeshBasicMaterial( 
+  wireframeMaterial = new THREE.MeshBasicMaterial( 
     { color: 0x5c683f, wireframe: true, transparent: true } ); 
-  var shape = THREE.SceneUtils.createMultiMaterialObject( 
+  shape = THREE.SceneUtils.createMultiMaterialObject( 
     sphereGeometry, [ darkMaterial, wireframeMaterial ] );
   shape.position = spotlight.position;
   scene.add( shape );
@@ -142,9 +142,9 @@ function init() {
   var uniforms = {
     topColor:    { type: "c", value: new THREE.Color( 0x0077ff ) },
     bottomColor: { type: "c", value: new THREE.Color( 0xffffff ) },
-    offset:    { type: "f", value: 33 },
-    exponent:  { type: "f", value: 0.6 }
-  }
+    offset:      { type: "f", value: 33 },
+    exponent:    { type: "f", value: 0.6 }
+  };
   uniforms.topColor.value.copy( hemiLight.color );
 
   scene.fog.color.copy( uniforms.bottomColor.value );
@@ -208,10 +208,10 @@ function render() {
 
   var timer = new Date().getTime() * 0.0005;
 
-  if (spotlight.position.x <= -200 && reversed == false) {
+  if (spotlight.position.x <= -200 && reversed === false) {
     reversed = true;
   }
-  else if (spotlight.position.x >= 200 && reversed == true) {
+  else if (spotlight.position.x >= 200 && reversed === true) {
     reversed = false;
   }
   if (reversed) {
