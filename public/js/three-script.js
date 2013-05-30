@@ -85,6 +85,7 @@ function init() {
   hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
   hemiLight.position.set( 0, 500, 0 );
   // hemiLight.castShadow = true;
+  hemiLight.visible = false;
   scene.add( hemiLight );
 
   // Ambient light
