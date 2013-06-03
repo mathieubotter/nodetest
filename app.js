@@ -10,7 +10,8 @@ var express = require('express'),
     todo = require('./routes/todo'),
     threejs = require('./routes/threejs'),
 	http = require('http'),
-	path = require('path');
+	path = require('path'),
+	db = require('./db');
 
 var app = express();
 
