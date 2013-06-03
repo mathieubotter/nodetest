@@ -25,7 +25,8 @@
     "ejs": "0.8.x",
     "ejs-locals": "~1.0.2",
     "stylus": "0.32.x",
-    "socket.io": "0.9.x"
+    "socket.io": "0.9.x",
+    "mongoose": "~3.6.11"
   },
   "devDependencies": {
     "mocha": "1.9.x",
