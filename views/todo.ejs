@@ -3,7 +3,14 @@
     <h2>Todo</h2>
     <p>A simple todo list.</p>
 
-    <form action="/todo/add" method="post" accept-charset="utf-8">
-	  <input type="text" name="content" />
-	</form>
+    <ul>
+    <% todos.forEach( function( todo ){ %>
+      <li><%= todo.content %></li>
+    <% }); %>
+    </ul>
+    
+    <form action="/todo/add" method="post" accept-charset="utf-8" class="form-inline">
+        <input type="text" name="content" placeholder="Todo..." />
+        <button type="submit" class="btn">Add</button>
+    </form>
 </div>
