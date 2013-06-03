@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
-var todoSchema   = mongoose.schema;
 
-var Todo = new Schema({
+var Todo = new mongoose.Schema({
 	user_id    : String,
 	content    : String,
 	updated_at : Date
