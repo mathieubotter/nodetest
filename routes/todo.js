@@ -3,12 +3,23 @@
 
 // GET todo items
 exports.index = function(req, res){
-  Todo.find(function (err, todos, count){
-    res.render('todo', {
-      title: 'Todo',
-      todos: todos
+  if(req.params.id != null){
+    Todo.find(function(err, todos, count){
+      res.render('todo', {
+        title: 'Edit todo',
+        todos: todos,
+        current: req.params.id
+      });
     });
-  });
+  } else {
+    Todo.find(function (err, todos, count){
+      res.render('todo', {
+        title: 'Todo',
+        todos: todos,
+        current: null
+      });
+    });
+  }
 };
 
 // POST new todo
@@ -18,6 +29,17 @@ exports.add = function(req, res){
     updated_at: Date.now()
   }).save(function(err, todo, count){
     res.redirect('/todo');
+  });
+};
+
+// Edit todo item
+exports.edit = function(req, res){
+  Todo.findById(req.params.id, function(err, todo){
+    todo.content = req.body.content;
+    todo.updated_at = Date.now();
+    todo.save(function(err, todo, count){
+      res.redirect('/todo');
+    });
   });
 };
 
