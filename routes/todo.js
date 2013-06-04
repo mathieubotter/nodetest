@@ -3,22 +3,28 @@
 
 // GET todo items
 exports.index = function(req, res){
-  if(req.params.id != null){
-    Todo.find(function(err, todos, count){
-      res.render('todo', {
-        title: 'Edit todo',
-        todos: todos,
-        current: req.params.id
+  if(req.params.id !== null){
+    Todo
+      .find()
+      .sort('-updated_at')
+      .exec(function (err, todos, count){
+        res.render('todo', {
+          title: 'Edit todo',
+          todos: todos,
+          current: req.params.id
+        });
       });
-    });
   } else {
-    Todo.find(function (err, todos, count){
-      res.render('todo', {
-        title: 'Todo',
-        todos: todos,
-        current: null
+    Todo
+      .find()
+      .sort('-updated_at')
+      .exec(function (err, todos, count){
+        res.render('todo', {
+          title: 'Todo',
+          todos: todos,
+          current: null
+        });
       });
-    });
   }
 };
 
@@ -44,7 +50,7 @@ exports.edit = function(req, res){
 };
 
 // DELETE todo item
-exports.delete = function(req, res){
+exports.destroy = function(req, res){
   Todo.findById(req.params.id, function (err, todo){
     todo.remove(function(err, todo){
       res.redirect('/todo');

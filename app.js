@@ -5,7 +5,7 @@
 
 var express = require('express'),
     engine = require('ejs-locals'),
-    db = require('./db')
+    db = require('./db'),
     home = require('./routes'),
     about = require('./routes/about'),
     todo = require('./routes/todo'),
@@ -46,7 +46,7 @@ app.get('/todo', todo.index);
 app.post('/todo/add', todo.add);
 app.get('/todo/edit/:id', todo.index);
 app.post('/todo/edit/:id', todo.edit);
-app.get('/todo/delete/:id', todo.delete);
+app.get('/todo/delete/:id', todo.destroy);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
