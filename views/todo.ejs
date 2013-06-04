@@ -5,10 +5,13 @@
 
     <ul>
     <% todos.forEach( function( todo ){ %>
-      <li><%= todo.content %></li>
+        <li>
+            <%= todo.content %>
+            <span> &middot; <a href="/todo/delete/<%= todo._id %>" title="Delete this todo item">Delete</a></span>
+        </li>
     <% }); %>
     </ul>
-    
+
     <form action="/todo/add" method="post" accept-charset="utf-8" class="form-inline">
         <input type="text" name="content" placeholder="Todo..." />
         <button type="submit" class="btn">Add</button>

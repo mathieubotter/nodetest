@@ -44,6 +44,7 @@ app.get('/threejs', threejs.index);
 // Todo list
 app.get('/todo', todo.index);
 app.post('/todo/add', todo.add);
+app.get('/todo/delete/:id', todo.delete);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
