@@ -14,8 +14,8 @@
             </form>
             <% }else{ %>
             <%= todo.content %>
-            <span> &middot; <a href="/todo/<%= todo._id %>" title="Edit this todo item">Edit</a></span>
-            <span> &middot; <a href="/todo/delete/<%= todo._id %>" title="Delete this todo item">Delete</a></span>
+            <span> &middot; <a href="/todo/edit/<%= todo._id %>" title="Edit this todo item"><i class="icon-edit"></i>Edit</a></span>
+            <span> &middot; <a href="/todo/delete/<%= todo._id %>" title="Delete this todo item"><i class="icon-remove"></i>Delete</a></span>
             <% } %>
         </li>
     <% }); %>
@@ -23,6 +23,6 @@
 
     <form action="/todo/add" method="post" accept-charset="utf-8" class="form-inline">
         <input type="text" name="content" placeholder="Todo..." />
-        <button type="submit" class="btn btn-success">Add</button>
+        <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i>Add</button>
     </form>
 </div>
