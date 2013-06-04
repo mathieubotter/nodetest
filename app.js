@@ -43,8 +43,8 @@ app.get('/threejs', threejs.index);
 
 // Todo list
 app.get('/todo', todo.index);
-app.get('/todo/:id', todo.index);
 app.post('/todo/add', todo.add);
+app.get('/todo/edit/:id', todo.index);
 app.post('/todo/edit/:id', todo.edit);
 app.get('/todo/delete/:id', todo.delete);
 
