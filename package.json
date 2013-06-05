@@ -2,7 +2,8 @@
   "name": "nodetest",
   "description": "A little web app project for node.js experiments",
   "version": "0.0.1",
-  "author": "Mathieu Botter (http://mathieubotter.com)",
+  "private": true,
+  "author": "Mathieu Botter <hi@mathieubotter.com> (http://mathieubotter.com)",
   "homepage": "http://mb-nodetest.herokuapp.com/",
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "dependencies": {
     "express": "3.2.x",
+    "connect": "~2.7.11",
     "ejs": "0.8.x",
     "ejs-locals": "~1.0.2",
     "stylus": "0.32.x",
