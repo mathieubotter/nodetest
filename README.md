@@ -7,14 +7,21 @@ It is developed using Sublime Text 2 and sometimes [Cloud9](http://c9.io).
 
 ## Getting Started
 
-    $ git clone git://github.com/mathieubotter/nodetest.git
-    $ cd nodetest
-    $ npm install
-    $ npm start
+```
+$ git clone git://github.com/mathieubotter/nodetest.git
+$ cd nodetest
+$ npm install
+$ npm start
+```
+
+Run jshint and stylus tasks:  
+```
+$ grunt
+```
 
 ## About
 
-NodeTest uses [express](http://expressjs.com/) with [ejs](http://embeddedjs.com/) and [stylus](http://learnboost.github.io/stylus/).  
+NodeTest uses [express](http://expressjs.com/) with [ejs](http://embeddedjs.com/) and [stylus](http://learnboost.github.io/stylus/). [MongoDB](http://www.mongodb.org/) as database with [mongoose](http://mongoosejs.com/) for ODM.  
 It also uses [mocha](http://visionmedia.github.io/mocha/) as test framework and [Heroku](https://www.heroku.com/) and/or [Nodejitsu](https://www.nodejitsu.com/) as hosting platform.
 
 ## License
