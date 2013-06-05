@@ -8,6 +8,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'app.js',
+        'db.js',
         'lib/**/*.js',
         'routes/*.js',
         'test/*.js',
