@@ -8,7 +8,7 @@
         <li>
             <% if(todo._id == current){ %>
             <form action="/todo/edit/<%= todo._id %>" method="post" accept-charset="utf-8" class="form-inline">
-                <input type="text" name="content" value="<%= todo.content %>" placeholder="Edit todo..." />
+                <input type="text" name="content" value="<%= todo.content %>" placeholder="Edit todo..." required/>
                 <a href="/todo" class="btn">Cancel</a>
                 <button type="submit" class="btn btn-warning">Edit</button>
             </form>
@@ -22,7 +22,7 @@
     </ul>
 
     <form action="/todo/add" method="post" accept-charset="utf-8" class="form-inline">
-        <input type="text" name="content" placeholder="Todo..." />
+        <input type="text" name="content" placeholder="Todo..." required/>
         <button type="submit" class="btn btn-success"><i class="icon-plus icon-white"></i>Add</button>
     </form>
 </div>
